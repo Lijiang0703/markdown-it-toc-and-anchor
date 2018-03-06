@@ -12,3 +12,5 @@ dist
 
 # code coverage
 .nyc_output
+
+package-lock.json

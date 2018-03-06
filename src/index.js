@@ -123,7 +123,14 @@ const generateTocMarkdownFromArray = (headings, options) => {
     })
   })
 
-  return treeToMarkdownBulletList(tree.nodes)
+  let mark = treeToMarkdownBulletList(tree.nodes)
+  
+  if (mark && mark.match(/^\*\s/)!=null) {
+    mark = mark.split("\n").filter(function(a) {
+      return a.replace(/^\*\s/,"").trim != ""
+    }).join("\n")
+  }
+  return mark
 }
 
 export default function(md, options) {

@@ -14,3 +14,11 @@ dist
 .nyc_output
 
 package-lock.json
+
+.gitignore
+.npmignore
+.travis.yml
+appveyor.yml
+package-lock.json
+
+__tests__

@@ -307,10 +307,12 @@ var generateTocMarkdownFromArray = function generateTocMarkdownFromArray(heading
 
   var mark = treeToMarkdownBulletList(tree.nodes);
 
-  if (mark && mark.match(/^\*\s/) != null) {
+  if (mark && mark.match(/^\s{0,5}\*/) != null) {
     mark = mark.split("\n").filter(function (a) {
-      return a.replace(/^\*\s/, "").trim != "";
-    }).join("\n");
+      return a.replace(/^\s{0,5}\*/, " ").trim() != "";
+    });
+    mark[0] = mark[0].trim();
+    return mark.join("\n");
   }
   return mark;
 };
